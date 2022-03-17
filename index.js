@@ -2,12 +2,12 @@ var express = require('express');
 var app = express();  
 var bodyParser = require('body-parser');   
 var urlencodedParser = bodyParser.urlencoded({ extended: false })  
-app.use(express.static('public'));  
+app.use(express.static('public'));
 app.get('/index.html', function (req, res) {  
    res.sendFile( __dirname  + "index.html" );  
 })  
-app.post('/process_post', urlencodedParser, function (req, res) {  
-   response = {Bienvenido:req.body.first_name,j:req.body.second_name}
+app.post('/process_post', urlencodedParser, function (req, res) { 
+   res.send("bienvenido:"+ " "+req.body.first_name + " " + req.body.second_name)
    console.log(response);  
    res.end(JSON.stringify(response));  
 })  
